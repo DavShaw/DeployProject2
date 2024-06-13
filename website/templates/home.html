@@ -1,0 +1,55 @@
+{% extends 'base.html' %}
+{% block title %}Home{% endblock %}
+{% block content %}
+<style>
+<<<<<<< HEAD
+=======
+  /* Estilos CSS para las notas */
+>>>>>>> e07a99a3ccbd9d48a994b486e6b56fddc58ab1cb
+  .list-group-item {
+    margin-bottom: 10px;
+    padding: 15px;
+    border-radius: 8px;
+  }
+
+  .list-group-item:nth-child(odd) {
+    background-color: #82CAFF;
+  }
+
+  .list-group-item:nth-child(even) {
+    background-color: #A0CFEC;
+  }
+
+  .list-group-item .close {
+    font-size: 1rem;
+    color: #ff0000;
+    cursor: pointer;
+  }
+</style>
+
+<div class="container mt-4">
+  <h1 class="text-center">Notes</h1>
+  <div class="row justify-content-center">
+    <div class="col-md-8">
+      <ul class="list-group list-group-flush" id="notes">
+        {% for note in user.notes %}
+          <li class="list-group-item d-flex justify-content-between align-items-center">
+            <span>{{ note.data }}</span>
+            <button type="button" class="close" onclick="deleteNote({{ note.id }})">
+              <span aria-hidden="true">&times;</span>
+            </button>
+          </li>
+        {% endfor %}
+      </ul>
+      <form method="POST" class="mt-4">
+        <textarea name="note" id="note" class="form-control" rows="3" placeholder="Write a note..."></textarea>
+        <br />
+        <div class="text-center">
+          <button type="submit" class="btn btn-primary">Add Note</button>
+        </div>
+      </form>
+    </div>
+  </div>
+</div>
+
+{% endblock %}
